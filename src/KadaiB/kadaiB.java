@@ -21,6 +21,7 @@ public class kadaiB {
 		degreeList[2]=2;
 		for(int i=3;i<N;i++) {
 
+
 			degreeList[i]=0;
 		}
 
