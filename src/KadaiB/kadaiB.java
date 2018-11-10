@@ -20,6 +20,7 @@ public class kadaiB {
 		degreeList[1]=2;
 		degreeList[2]=2;
 		for(int i=3;i<N;i++) {
+
 			degreeList[i]=0;
 		}
 
@@ -87,10 +88,10 @@ public class kadaiB {
 			//System.out.println(degreeList[i]);
 		}
 
-		
-		
-		
-		
+
+
+
+
 
 		int M=(N-m0)*2+3;
 		int[]addressList=new int[N];
@@ -108,7 +109,7 @@ public class kadaiB {
 			cursor[pairList[i][1]]++;
 		}
 		//address,neighbor
-		
+
 		int degreemax=0;
 		for(int i=0;i<N;i++) {
 			if(degreeList[i]>degreemax) {
@@ -127,8 +128,8 @@ public class kadaiB {
 			Pk[i]=(double)degreeListN[i]/N;
 			//System.out.println(Pk[i]);
 		}//degreemax,Pk
-		
-		
+
+
 		int vi,vj;
 		double Length=0;
 		int[] dist=new int [N];
@@ -136,14 +137,14 @@ public class kadaiB {
 		ArrayList<Integer>queue=new ArrayList<Integer>();
 		boolean[]visitQ=new boolean[N];
 		for(int i=0;i<N;i++) length[i]=0.0;
-		
+
 		for(int i=0;i<N;i++) {
 			for(int j=0;j<N;j++) visitQ[j]=false;
 			dist[i]=0;
 			queue.add(i);
 			visitQ[i]=true;
 			for(int j=0;queue.isEmpty()==false;j++) {
-				vi=queue.get(0)	;		
+				vi=queue.get(0)	;
 				for(int k=addressList[vi];k<addressList[vi]+degreeList[vi];k++) {
 					vj=neighborList[k];
 					if(visitQ[vj]==false) {
@@ -151,11 +152,11 @@ public class kadaiB {
 						visitQ[vj]=true;
 						dist[vj]=dist[vi]+1;
 						length[i]+=dist[vj];
-						
-						
+
+
 					}
 				}
-				queue.remove(0);				
+				queue.remove(0);
 			}
 			length[i]/=(double)(N-1);
 			Length+=length[i];
@@ -163,8 +164,8 @@ public class kadaiB {
 		Length/=(double)N;
 		System.out.println(Length);
 		//Length,length
-		
-		
+
+
 		int n1,n2,clusterN=0;
 		double clusteringCoefficient=0;
 		double[]clusteringCoefficientList=new double[N];
@@ -183,12 +184,12 @@ public class kadaiB {
 				clusteringCoefficient+=clusteringCoefficientList[n0];
 			}
 			clusteringCoefficient/=clusterN;
-			
-			
+
+
 		}
 		System.out.println(clusteringCoefficient);
 		//clusteringCoefficient,
-		
+
 		System.out.println(N+"\t"+Length);
 		System.out.println(N+"\t"+clusteringCoefficient);
 	}
